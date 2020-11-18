@@ -4,7 +4,7 @@ spring:
   datasource:
     name: mysql_db
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://cdb-dzuvsk24.cd.tencentcdb.com:10075/intelligent_park_lot?useSSL=FALSE&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://cdb-dzuvsk24.cd.tencentcdb.com:10075/simple-fast?useSSL=FALSE&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai
     username: root
     password: yun@2020
     druid:
@@ -21,19 +21,18 @@ spring:
       testWhileIdle: true
       testOnBorrow: false
       testOnReturn: false
-  resources:
-    static-locations: classpath:/templates/,classpath:/static/
   profiles:
     active: dev
+  web:
+    resources:
+      add-mappings: true
 
-##mybaties\u914D\u7F6E
+##mybaties 配置
 mybatis:
-  mapper-locations: classpath*:mybaits/**/*Mapper.xml
-  mapperLocations: classpath*:mybaits/**/*Mapper.xml
-  config-location: classpath:mybaits/mybatis-config.xml
-  configLocation: classpath:mybaits/mybaits-config.xml
+  mapper-locations: classpath*:mybatis/**/*Mapper.xml
+  mapperLocations: classpath*:mybatis/**/*Mapper.xml
 
-##\u5206\u9875\u63D2\u4EF6\u914D\u7F6E
+##分页插件配置
 pagehelper:
   helperDialect: mysql
   reasonable: true

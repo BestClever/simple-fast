@@ -1,7 +1,7 @@
 package com.halfsummer.common.enums;
 
 
-import com.halfsummer.baseframework.exception.BaseInfoInterface;
+import com.halfsummer.framework.exception.BaseInfoInterface;
 
 /**
  *  公用描述枚举类

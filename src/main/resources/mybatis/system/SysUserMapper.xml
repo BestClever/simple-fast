@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.halfsummer.modules.system.user.mapper.SysUserMapper">
+    
+    <resultMap type="com.halfsummer.modules.system.user.domain.SysUser" id="SysUserResult">
+        <result property="id"    column="id"    />
+        <result property="userName"    column="user_name"    />
+        <result property="loginName"    column="login_name"    />
+        <result property="password"    column="password"    />
+        <result property="contactInformation"    column="contact_information"    />
+        <result property="address"    column="address"    />
+        <result property="sex"    column="sex"    />
+        <result property="deptId"    column="dept_id"    />
+        <result property="orderNum"    column="order_num"    />
+        <result property="avatar"    column="avatar"    />
+        <result property="upperLeader"    column="upper_leader"    />
+        <result property="hireDate"    column="hire_date"    />
+        <result property="salt"    column="salt"    />
+        <result property="isAvailable"    column="is_available"    />
+        <result property="isDelete"    column="is_delete"    />
+        <result property="remark"    column="remark"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createByName"    column="create_by_name"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateByName"    column="update_by_name"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectSysUserVo">
+        select id, user_name, login_name, password, contact_information, address, sex, dept_id, order_num, avatar, upper_leader, hire_date, salt, is_available, is_delete, remark, create_by, create_by_name, create_time, update_by, update_by_name, update_time from sys_user
+    </sql>
+
+    <select id="selectSysUserList" parameterType="com.halfsummer.modules.system.user.vo.SysUserVo" resultMap="SysUserResult">
+        <include refid="selectSysUserVo"/>
+        <where>  
+            <if test="userName != null  and userName != ''"> and user_name like concat('%', #{userName}, '%')</if>
+            <if test="loginName != null  and loginName != ''"> and login_name like concat('%', #{loginName}, '%')</if>
+            <if test="password != null  and password != ''"> and password = #{password}</if>
+            <if test="contactInformation != null  and contactInformation != ''"> and contact_information = #{contactInformation}</if>
+            <if test="address != null  and address != ''"> and address = #{address}</if>
+            <if test="sex != null  and sex != ''"> and sex = #{sex}</if>
+            <if test="deptId != null "> and dept_id = #{deptId}</if>
+            <if test="orderNum != null  and orderNum != ''"> and order_num = #{orderNum}</if>
+            <if test="avatar != null  and avatar != ''"> and avatar = #{avatar}</if>
+            <if test="upperLeader != null "> and upper_leader = #{upperLeader}</if>
+            <if test="hireDate != null "> and hire_date = #{hireDate}</if>
+            <if test="salt != null  and salt != ''"> and salt = #{salt}</if>
+            <if test="isAvailable != null  and isAvailable != ''"> and is_available = #{isAvailable}</if>
+            <if test="isDelete != null  and isDelete != ''"> and is_delete = #{isDelete}</if>
+            <if test="createByName != null  and createByName != ''"> and create_by_name like concat('%', #{createByName}, '%')</if>
+            <if test="updateByName != null  and updateByName != ''"> and update_by_name like concat('%', #{updateByName}, '%')</if>
+        </where>
+    </select>
+    
+    <select id="selectSysUserById" parameterType="Long" resultMap="SysUserResult">
+        <include refid="selectSysUserVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertSysUser" parameterType="com.halfsummer.modules.system.user.vo.SysUserVo" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userName != null">user_name,</if>
+            <if test="loginName != null">login_name,</if>
+            <if test="password != null">password,</if>
+            <if test="contactInformation != null">contact_information,</if>
+            <if test="address != null">address,</if>
+            <if test="sex != null">sex,</if>
+            <if test="deptId != null">dept_id,</if>
+            <if test="orderNum != null">order_num,</if>
+            <if test="avatar != null">avatar,</if>
+            <if test="upperLeader != null">upper_leader,</if>
+            <if test="hireDate != null">hire_date,</if>
+            <if test="salt != null">salt,</if>
+            <if test="isAvailable != null">is_available,</if>
+            <if test="isDelete != null">is_delete,</if>
+            <if test="remark != null">remark,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createByName != null">create_by_name,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateByName != null">update_by_name,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userName != null">#{userName},</if>
+            <if test="loginName != null">#{loginName},</if>
+            <if test="password != null">#{password},</if>
+            <if test="contactInformation != null">#{contactInformation},</if>
+            <if test="address != null">#{address},</if>
+            <if test="sex != null">#{sex},</if>
+            <if test="deptId != null">#{deptId},</if>
+            <if test="orderNum != null">#{orderNum},</if>
+            <if test="avatar != null">#{avatar},</if>
+            <if test="upperLeader != null">#{upperLeader},</if>
+            <if test="hireDate != null">#{hireDate},</if>
+            <if test="salt != null">#{salt},</if>
+            <if test="isAvailable != null">#{isAvailable},</if>
+            <if test="isDelete != null">#{isDelete},</if>
+            <if test="remark != null">#{remark},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createByName != null">#{createByName},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateByName != null">#{updateByName},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSysUser" parameterType="com.halfsummer.modules.system.user.vo.SysUserVo">
+        update sys_user
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userName != null">user_name = #{userName},</if>
+            <if test="loginName != null">login_name = #{loginName},</if>
+            <if test="password != null">password = #{password},</if>
+            <if test="contactInformation != null">contact_information = #{contactInformation},</if>
+            <if test="address != null">address = #{address},</if>
+            <if test="sex != null">sex = #{sex},</if>
+            <if test="deptId != null">dept_id = #{deptId},</if>
+            <if test="orderNum != null">order_num = #{orderNum},</if>
+            <if test="avatar != null">avatar = #{avatar},</if>
+            <if test="upperLeader != null">upper_leader = #{upperLeader},</if>
+            <if test="hireDate != null">hire_date = #{hireDate},</if>
+            <if test="salt != null">salt = #{salt},</if>
+            <if test="isAvailable != null">is_available = #{isAvailable},</if>
+            <if test="isDelete != null">is_delete = #{isDelete},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createByName != null">create_by_name = #{createByName},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateByName != null">update_by_name = #{updateByName},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteSysUserById" parameterType="Long">
+        delete from sys_user where id = #{id}
+    </delete>
+
+    <delete id="deleteSysUserByIds" parameterType="String">
+        delete from sys_user where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

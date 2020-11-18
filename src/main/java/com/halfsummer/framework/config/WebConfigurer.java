@@ -1,0 +1,28 @@
+package com.halfsummer.framework.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * @author BestClever
+ * @title: WebConfigurer
+ * @projectName
+ * @description: TODO
+ * @date 2020-05-23 23:36
+ */
+@Configuration
+public class WebConfigurer implements WebMvcConfigurer {
+
+    private static List<String> EXCLUDE_PATH = Arrays.asList("/","/login","/register","/erro","/templates/**","/css/**","/js/**","/lib/**","/images/**","/login.html","/index.html","/pages/**","/data/**","/favicon.ico");
+
+//    @Autowired
+//    private LoginInterceptor loginInterceptor;
+//
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(loginInterceptor).addPathPatterns("/**").excludePathPatterns(EXCLUDE_PATH);
+//    }
+}
