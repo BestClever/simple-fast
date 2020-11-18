@@ -73,7 +73,7 @@ public class SysUser extends BaseEntity
 
     /** 是否删除 */
     @Excel(name = "是否删除")
-    private String isDelete;
+    private String isDeleted;
 
     /** 创建者名称 */
     @Excel(name = "创建者名称")
@@ -209,14 +209,14 @@ public class SysUser extends BaseEntity
     {
         return isAvailable;
     }
-    public void setIsDelete(String isDelete)
+    public void setIsDeleted(String isDeleted)
     {
-        this.isDelete = isDelete;
+        this.isDeleted = isDeleted;
     }
 
-    public String getIsDelete()
+    public String getIsDeleted()
     {
-        return isDelete;
+        return isDeleted;
     }
     public void setCreateByName(String createByName)
     {
@@ -254,7 +254,7 @@ public class SysUser extends BaseEntity
             .append("hireDate", getHireDate())
             .append("salt", getSalt())
             .append("isAvailable", getIsAvailable())
-            .append("isDelete", getIsDelete())
+            .append("isDeleted", getIsDeleted())
             .append("remark", getRemark())
             .append("createBy", getCreateBy())
             .append("createByName", getCreateByName())

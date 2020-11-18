@@ -17,7 +17,7 @@ import com.halfsummer.modules.system.user.service.SysUserService;
 
 /**
  * 系统用户Controller
- *
+ * 
  * @author halfsummer
  * @date 2020-11-18
  */
@@ -34,8 +34,8 @@ public class SysUserController{
     * 访问主页
     */
     @GetMapping()
-    public String user(){
-        return prefix + "/user";
+    public String index(){
+        return prefix + "/index";
     }
 
     /**
@@ -81,9 +81,9 @@ public class SysUserController{
     /**
      * 新增保存系统用户
      */
-    @PostMapping("/add")
+    @PostMapping("/save")
     @ResponseBody
-    public ResultInfo addSave(SysUserVo sysUserVo){
+    public ResultInfo save(SysUserVo sysUserVo){
         return sysUserService.insertSysUser(sysUserVo);
     }
 
@@ -92,9 +92,9 @@ public class SysUserController{
     /**
      * 修改保存系统用户
      */
-    @PostMapping("/save")
+    @PostMapping("/")
     @ResponseBody
-    public ResultInfo save(SysUserVo sysUserVo){
+    public ResultInfo update(SysUserVo sysUserVo){
         return sysUserService.updateSysUser(sysUserVo);
     }
 

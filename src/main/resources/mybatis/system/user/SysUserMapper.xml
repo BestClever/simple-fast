@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="hireDate"    column="hire_date"    />
         <result property="salt"    column="salt"    />
         <result property="isAvailable"    column="is_available"    />
-        <result property="isDelete"    column="is_delete"    />
+        <result property="isDeleted"    column="is_deleted"    />
         <result property="remark"    column="remark"    />
         <result property="createBy"    column="create_by"    />
         <result property="createByName"    column="create_by_name"    />
@@ -30,7 +30,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
     <sql id="selectSysUserVo">
-        select id, user_name, login_name, password, contact_information, address, sex, dept_id, order_num, avatar, upper_leader, hire_date, salt, is_available, is_delete, remark, create_by, create_by_name, create_time, update_by, update_by_name, update_time from sys_user
+        select id, user_name, login_name, password, contact_information, address, sex, dept_id, order_num, avatar, upper_leader, hire_date, salt, is_available, is_deleted, remark, create_by, create_by_name, create_time, update_by, update_by_name, update_time from sys_user
     </sql>
 
     <select id="selectSysUserList" parameterType="com.halfsummer.modules.system.user.vo.SysUserVo" resultMap="SysUserResult">
@@ -49,7 +49,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="hireDate != null "> and hire_date = #{hireDate}</if>
             <if test="salt != null  and salt != ''"> and salt = #{salt}</if>
             <if test="isAvailable != null  and isAvailable != ''"> and is_available = #{isAvailable}</if>
-            <if test="isDelete != null  and isDelete != ''"> and is_delete = #{isDelete}</if>
+            <if test="isDeleted != null  and isDeleted != ''"> and is_deleted = #{isDeleted}</if>
             <if test="createByName != null  and createByName != ''"> and create_by_name like concat('%', #{createByName}, '%')</if>
             <if test="updateByName != null  and updateByName != ''"> and update_by_name like concat('%', #{updateByName}, '%')</if>
         </where>
@@ -76,7 +76,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="hireDate != null">hire_date,</if>
             <if test="salt != null">salt,</if>
             <if test="isAvailable != null">is_available,</if>
-            <if test="isDelete != null">is_delete,</if>
+            <if test="isDeleted != null">is_deleted,</if>
             <if test="remark != null">remark,</if>
             <if test="createBy != null">create_by,</if>
             <if test="createByName != null">create_by_name,</if>
@@ -99,7 +99,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="hireDate != null">#{hireDate},</if>
             <if test="salt != null">#{salt},</if>
             <if test="isAvailable != null">#{isAvailable},</if>
-            <if test="isDelete != null">#{isDelete},</if>
+            <if test="isDeleted != null">#{isDeleted},</if>
             <if test="remark != null">#{remark},</if>
             <if test="createBy != null">#{createBy},</if>
             <if test="createByName != null">#{createByName},</if>
@@ -126,7 +126,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="hireDate != null">hire_date = #{hireDate},</if>
             <if test="salt != null">salt = #{salt},</if>
             <if test="isAvailable != null">is_available = #{isAvailable},</if>
-            <if test="isDelete != null">is_delete = #{isDelete},</if>
+            <if test="isDeleted != null">is_deleted = #{isDeleted},</if>
             <if test="remark != null">remark = #{remark},</if>
             <if test="createBy != null">create_by = #{createBy},</if>
             <if test="createByName != null">create_by_name = #{createByName},</if>

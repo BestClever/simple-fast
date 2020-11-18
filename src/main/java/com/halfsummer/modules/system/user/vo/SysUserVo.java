@@ -71,10 +71,6 @@ public class SysUserVo extends BaseQueryEntity
     @Excel(name = "是否有效")
     private String isAvailable;
 
-    /** 是否删除 */
-    @Excel(name = "是否删除")
-    private String isDelete;
-
     /** 创建者名称 */
     @Excel(name = "创建者名称")
     private String createByName;
@@ -209,15 +205,6 @@ public class SysUserVo extends BaseQueryEntity
     {
         return isAvailable;
     }
-    public void setIsDelete(String isDelete)
-    {
-        this.isDelete = isDelete;
-    }
-
-    public String getIsDelete()
-    {
-        return isDelete;
-    }
     public void setCreateByName(String createByName)
     {
         this.createByName = createByName;
@@ -254,7 +241,7 @@ public class SysUserVo extends BaseQueryEntity
             .append("hireDate", getHireDate())
             .append("salt", getSalt())
             .append("isAvailable", getIsAvailable())
-            .append("isDelete", getIsDelete())
+            .append("isDeleted", getIsDeleted())
             .append("remark", getRemark())
             .append("createBy", getCreateBy())
             .append("createByName", getCreateByName())

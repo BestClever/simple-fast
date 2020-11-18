@@ -41,8 +41,8 @@ public class BaseQueryEntity{
     private String orderByColumn;
     /** 排序的方向 "desc" 或者 "asc". */
     private String isAsc;
-    //系统标识默认 为 0
-    private String sysFlag = "0";
+    //系统标识默认 为 1(未删除)
+    private String isDeleted = "1";
 
     /** 备注 */
     private String remark;
@@ -63,6 +63,19 @@ public class BaseQueryEntity{
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+08:00")
     private Date updateTime;
 
+
+    /** 搜索值 多个条件的搜索 */
+    private String searchValue;
+
+    public String getSearchValue()
+    {
+        return searchValue;
+    }
+
+    public void setSearchValue(String searchValue)
+    {
+        this.searchValue = searchValue;
+    }
 
     public String getRemark() {
         return remark;
@@ -149,11 +162,11 @@ public class BaseQueryEntity{
         this.isAsc = isAsc;
     }
 
-    public String getSysFlag() {
-        return sysFlag;
+    public String getIsDeleted() {
+        return isDeleted;
     }
 
-    public void setSysFlag(String sysFlag) {
-        this.sysFlag = sysFlag;
+    public void setIsDeleted(String isDeleted) {
+        this.isDeleted = isDeleted;
     }
 }
